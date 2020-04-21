@@ -1,0 +1,2 @@
+D:\lol\myproj\Debug\myproj.exe
+D:\lol\myproj\Debug\myproj.pdb
