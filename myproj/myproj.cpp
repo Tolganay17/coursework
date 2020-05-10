@@ -1,289 +1,35 @@
-﻿#include<iostream>
-#include<iomanip>
+﻿
 #include<windows.h>
 #include<string>
+#include<vector>
+#include<algorithm>
+#include "applicant.h"
+#include "Administrator.h"
+#include "application.h"
+#include "Calculator.h"
 
 using namespace std;
-
-
-class Erasmus
-{
-public:
-	void getInfo();
-	
-
-	int num;
-	char firstname[60];
-	char lastname[60];
-
-	int GPA;
-
-};
-
-
-class booking : public Erasmus
-{
-public:
-	void main_menu();
-	void chooseTarget()
-	{
-	   chooseCountriesOutside();
-	};
-
-	void choosesecondTarget()
-	{
-	   chooseCountries();
-	};
-
-	void chooseCountries()
-	{
-		cout << "Here are the  available coutries in Europe:" << endl << endl;
-		cout << "---------------" << endl;
-		cout << "(1) - AUSTRIA" << endl;
-		cout << "(2) - ITALY" << endl;
-		cout << "(3) - SPAIN" << endl;
-		cout << "(4) - ESTONIA" << endl;
-		cout << "(5) - NORWAY" << endl;
-		cout << "(6) - FRANCE" << endl;
-		cout << "(7) - POLAND" << endl;
-		cout << "\n(0) - Go Back" << endl;
-		cout << "---------------" << endl;
-		cout << "\nEnter your choice: ";
-		cin >> TargetChoice;
-		cout << endl << endl;
-
-		switch (TargetChoice)
-		{
-		case 1:
-			destination = "AUSTRIA";
-			
-			break;
-		case 2:
-			destination = "ITALY";
-			
-			break;
-		case 3:
-		destination = "SPAIN";
-			
-			break;
-		case 4:
-			destination = "ESTONIA";
-		
-			break;
-		case 5:
-			destination = "NORWAY";
-			
-			break;
-		case 6:
-			destination = "FRANCE";
-		
-			break;
-		case 7:
-			destination= "POLAND";
-		
-			break;
-		case 0:
-			system("cls");
-			choosesecondTarget();
-			break;
-		default:
-			cout << "\nInvalid Choice! Sorry, the program will exit now.\n\n";
-			system("cls");
-			exit(0);
-
-		}
-
-		chooseSemester();
-	};
-
-	void chooseCountriesOutside()
-	{
-		booking b;
-
-		cout << "Here are the available coutries outside Europe:" << endl << endl;
-		cout << "---------------" << endl;
-		cout << "(1) - CANADA" << endl;
-		cout << "(2) - BEIJING" << endl;
-		cout << "(3) - USA" << endl;
-		cout << "(4) - HONGKONG" << endl;
-		cout << "(5) - SEOUL" << endl;
-		cout << "(6) - AUSTRALIA" << endl;
-		cout << "(7) - OSAKA" << endl;
-
-		cout << "\n(0) - Go Back" << endl;
-		cout << "---------------" << endl;
-		cout << "\nEnter your choice: ";
-		cin >> TargetChoice;
-
-		switch (TargetChoice)
-		{
-		case 1:
-			destination = "CANADA";
-			
-			break;
-		case 2:
-		destination = "BEIJING";
-			
-			break;
-		case 3:
-			destination = "USA";
-			
-			break;
-		case 4:
-			destination = "HONGKONG";
-			
-			break;
-		case 5:
-			destination= "SEOUL";
-			
-			break;
-		case 6:
-			destination = "AUSTRALIA";
-			
-			break;
-		case 7:
-			destination = "OSAKA";
-			
-			break;
-		case 0:
-			system("cls");
-			chooseTarget();
-			break;
-		default:
-			cout << "\nInvalid Choice! Sorry, the program will exit now.\n\n";
-			system("cls");
-			exit(0);
-
-
-		}
-
-		chooseSemester();
-
-
-	};
-
-	void chooseSemester()
-	{
-		cout << "\nOne semester or two semesters?" << endl;
-		cout << "----------------------" << endl;
-		cout << "(1) - For One Semester " << endl;
-		cout << "(2) - For Two Semesters" << endl;
-		cout << "----------------------" << endl;
-		cout << "\nEnter your choice: ";
-		cin >> SemesterChoice;
-
-		switch (SemesterChoice)
-		{
-		case 1:
-			semester = "FOR ONE SEMESTER ";
-			break;
-		case 2:
-			semester = "FOR TWO SEMESTERS";
-			
-			break;
-		case 0:
-
-			system("cls");
-			break;
-		default:
-			cout << "\nInvalid Choice! Sorry, the program will exit now.\n\n";
-			system("cls");
-			exit(0);
-
-		}
-		Erasmus::getInfo();
-		cin.ignore();
-
-	
-	};
-
-
-	
-	void show()
-	{
-		system("cls");
-
-		cout << setw(50) << "ERASMUS STUDENTS EXCHANGE" << endl;
-		cout << setw(45) << "TARGET DETAILS" << endl << endl
-
-			<< endl << "|_________________________________________________________________________"
-			<< endl << " PASSENGER INFORMATION"
-			<< endl << " Name: " << lastname << "/" << firstname
-
-			<< endl << "GPA :" << GPA
-
-			<< endl << "|_________________________________________________________________________"
-			<< endl << " FLIGHT INFORMATION"
-			<< endl << " Origin: LITHUANIA"
-			<< endl << " Erasmus country: " << destination
-			<< endl << " VILNIUS GEDIDIMNAS TECHNICAL UNIVERSITY"
-
-			<< endl << endl << " " << semester;
-			
-		
-
-		cout << "\n\nPLEASE DOUBLE CHECK";
-		cout << "\n(1) - Confirm";
-		cout << "\n(2) - Go Back";
-		cout << "\n\nEnter choice: ";
-		cin.ignore();
-		main_menu();
-	};
-
-
-
-protected:
-	int target;
-	int TargetChoice;
-	string destination;
-
-	int SemesterChoice;
-	string semester;
-
-
-
-
-};
-
-void  Erasmus::getInfo()
-{
-	system("CLS");
-	cout << setw(60) << "\n\nPASSENGER INFORMATION";
-	cout << "\n\n\nEnter FIRST NAME: ";
-	cin.ignore();
-	cin.getline(firstname, 60);
-
-	cout << "\nEnter LAST NAME: ";
-	cin.ignore();
-	cin.getline(lastname, 60);
-	cout << endl;
-
-
-
-	cout << "Enter GPA: ";
-	cin >> GPA;
-	cout << endl << endl;
-
-	
-}
-void booking::main_menu() {
+int counter = 0;
+void showApplicant(vector<Administrator>& appl,int );
+void admin(vector<Administrator>& appl, int );
+void dean(vector<Administrator>& appl, int );
+void student_menu(vector<Administrator>& appl, int);
+void main_menu(vector<Administrator>&appl,int i) {
 	int menu_choice;
 
-	cout << "NAIA 123 TICKETING";
+	cout << "ERASMUS STUDENTS ExCHANGE";
 	cout << "\n\n\n\n\n\n\n\n\n\n\t\t WELCOME TO ERASMUS STUDENTS EXCHANGE PROGRAM!";
 	Sleep(1500);
 	system("cls");
 
 	cout << "\n\n\n\n\n\n";
-	cout << setw(60) << "***************************************" << endl;
-	cout << setw(60) << "*        Erasmus Students Exchange    *" << endl;
-	cout << setw(60) << "*             MAIN MENU               *" << endl;
-	cout << setw(60) << "*        ENTER YOUR CHOICE            *" << endl;
-	cout << setw(60) << "*   PRESS 1 FOR STUDYING IN EUROPE    *" << endl;
-	cout << setw(60) << "* PRESS 2 FOR STUDYING OUTSIDE EUROPE *" << endl;
-	cout << setw(60) << "* PRESS 2 FOR APPLICATION STATUS      *" << endl;
-	cout << setw(60) << "*************************************" << endl << endl << endl;
-	cout << setw(60) << "    ENTER YOUR CHOICE: ";
+	cout << setw(60) << "       Erasmus Students Exchange      \n";
+	cout << setw(60) << "             MAIN MENU               \n ";
+	cout << setw(60) << "         ENTER YOUR CHOICE            \n";
+	cout << setw(60) << "         1 FOR STUDENTS               \n";
+	cout << setw(60) << "         2 TO SIGN IN AS ADMIN        \n";
+	cout << setw(60) << "         3 TO EVALUATE               \n\n";
+	cout << setw(60) << "         ENTER YOUR CHOICE: ";
 	cin >> menu_choice;
 
 
@@ -293,27 +39,170 @@ void booking::main_menu() {
 	switch (menu_choice)
 	{
 	case 1:
-		choosesecondTarget();
 
-
+		appl[i].setid(i);
+		student_menu(appl,i);
+		
 		break;
-
-
-	case 2:
-		chooseTarget();
-		break;
-
+	
+	case 2:admin(appl,i); break;
+	case 3:dean(appl, i); break;
+	
+	
 	}
+	
 }
 
 int main()
-{
-	booking b;
-	b.main_menu();
-	b.show();
+{ 
+	vector<Administrator>appl;
+	for (int i = 0; i < 100; i++) {
+		Administrator a;
+		appl.push_back(a); 
+		main_menu(appl, i);
+		appl[i].show();
+		sort(appl.begin(),appl.end());
+	}
+
 	return 0;
 
 }
+void dean(vector<Administrator>& appl, int n) {
+	cout << "\n";
+	
 
+	for (int i = counter; i < n; i++) {
+		system("cls");
+		appl[i].show2();
+		cout << "\n\n| SELECT OPTION: \n1)APPROVE \n2)DISAPPROVE\n";
+		int choice;
+		cin >> choice;
+		switch (choice) {
+		case 1:appl[i].setStatus("Approved"); counter++; break;
+		case 2:appl[i].setStatus("Disapproved");counter++; break;
+		}
+
+
+	}
+	cout << "\nPress enter to go to main menu";
+	_getch();
+
+	main_menu(appl,n);
+}
+void admin(vector<Administrator>& appl, int n) {
+	system("cls");
+	cout << "\n";
+	Administrator adm;
+	string log, pass;
+	cout << "\nEnter login: ";
+	cin >> log;
+	cout << "\nEnter password: ";
+	cin >> pass;
+	if (log == adm.rlog() && pass == adm.rpass()) {
+		system("cls");
+		for (int i = 0; i < n; i++) {
+			appl[i].show2();
+
+		}
+	}
+	else cout << "Incorrect password";
+	cout << "\nPress enter to go to main menu";
+	_getch();
+	main_menu(appl,n);
+}
+void showApplicant(vector<Administrator>& appl,int n) {
+	int id;
+	cout << "\n\n\tENTER YOUR ID: ";
+	cin >> id;
+	appl[id].show2();
+	cout << "\nPress enter to go to main menu";
+	_getch();
+	main_menu(appl,n);
+}
+void calculation(vector<Administrator>& appl, int n) {
+	Calculator cal;
+	Calculator c;
+	double ielts_score, gpa;
+	int exp, active;
+	int activitychoice;
+	int ExperienceChoice;
+	cout << "\n\n What is your Ielts score?\n";
+	cin >> ielts_score;
+	cout << "\n\n What is your gpa?\n";
+	cin >> gpa;
+	cout << endl << endl;
+	cout << "Are you an active student?";
+	cout << "\n\n (1)-YES";
+	cout << "\n (2)-NO\n";
+	cout << "---------------" << endl;
+	cout << "\nEnter your choice: ";
+	cin >> activitychoice;
+	switch (activitychoice) {
+	case 1:
+		active = 1;
+		break;
+	case 2:
+		active = 0;
+		break;
+	default:
+		cout << "\nInvalid Choice! Sorry, the program will exit now.\n\n";
+		system("cls");
+		exit(0);
+	}
+	cout << "\n\n Have you studied under Erasmus program before?";
+	cout << "\n\n (1)-YES";
+	cout << "\n (2)-NO\n\n";
+	cout << "---------------" << endl;
+	cout << "\nEnter your choice: \n";
+	cin >> ExperienceChoice;
+	switch (ExperienceChoice) {
+	case 1:
+		exp = 1;
+		break;
+	case 2:
+		exp = 0;
+		break;
+	default:
+		cout << "\nInvalid Choice! Sorry, the program will exit now.\n\n";
+		system("cls");
+		exit(0);
+	}
+	c=cal(ielts_score, gpa, active, exp);
+	c.show();
+	cout << "Press enter";
+	_getch();
+	main_menu(appl, n);
+}
+void student_menu(vector<Administrator>& appl, int n) {
+	int StudentChoice;
+	cout << "\n(1)-Start application" << endl << endl;
+	cout << "\n(2)-See application status" << endl << endl;
+	cout << "\n(3)-Calculate the possibillity of admission" << endl << endl;
+	cout << "\n(0) - Go Back" << endl;
+	cout << "---------------" << endl;
+	cout << "\nEnter your choice:\n ";
+	cin >> StudentChoice;
+	switch (StudentChoice) {
+	case 1:
+		
+		appl[n].ChooseErasmusdestination();
+		break;
+	case 2:
+		system("cls");
+		showApplicant(appl, n);
+		break;
+	case 3:
+		
+		system("cls");
+		calculation(appl, n);
+		break;
+	
+	default:
+		cout << "\nInvalid Choice! Sorry, the program will exit now.\n\n";
+		system("cls");
+		exit(0);
+	}
+	
+}
 
 
